@@ -14,7 +14,7 @@ class BaseQuestionEngine:
         q_set = []
         for _ in range(n_to_gen):
             curr_q = self.gen_question(**kwargs)
-            while curr_q in q_set:
+            while curr_q in q_set or curr_q[0] == curr_q[1]:
                 curr_q = self.gen_question(**kwargs)
             q_set.append(curr_q)
         return q_set
