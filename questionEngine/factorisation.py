@@ -1,5 +1,5 @@
 from questionEngine.base_question_engine import BaseQuestionEngine
-import sympy
+from sympy import *
 import random
 
 
@@ -12,11 +12,11 @@ class FactorisationQuestions(BaseQuestionEngine):
             coeff_range = [-6, 6]
         if follower_range is None:
             follower_range = [-12, 12]
-        pre_gen_eq = random.randint(*coeff_range) * \
+        pre_gen_eq = 1 * \
             (random.randint(*coeff_range) * self.x + random.randint(*follower_range)) * \
             (random.randint(*coeff_range) * self.x + random.randint(*follower_range))
 
-        return pre_gen_eq.expand(), pre_gen_eq
+        return [latex(pre_gen_eq.expand()), latex(pre_gen_eq)]
 
     def gen_question(self, diff=0, **kwargs):
         if diff == 0:
@@ -25,4 +25,4 @@ class FactorisationQuestions(BaseQuestionEngine):
 
 if __name__ == "__main__":
     test_fac_engine = FactorisationQuestions()
-    print(test_fac_engine.gen_question_set(20, diff=0))
+    print(test_fac_engine.gen_question_set(10, diff=0))
