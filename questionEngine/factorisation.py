@@ -11,12 +11,12 @@ class FactorisationQuestions(BaseQuestionEngine):
         if coeff_range is None:
             coeff_range = [-2, 2]
         if follower_range is None:
-            follower_range = [-12, 12]
+            follower_range = [-8, 8]
         pre_gen_eq = 1 * \
             (random.randint(*coeff_range) * self.x + random.randint(*follower_range)) * \
             (random.randint(*coeff_range) * self.x + random.randint(*follower_range))
 
-        return [latex(pre_gen_eq.expand()), latex(pre_gen_eq)]
+        return [pre_gen_eq.expand(), pre_gen_eq]
 
     def gen_quad_factorisation_complete_square_x_only(self, **kwargs):
         coeff_range = [1, 3]
@@ -26,7 +26,7 @@ class FactorisationQuestions(BaseQuestionEngine):
             (random.randint(*coeff_range) * self.x + random.randint(*bracket_follower_range))**2 +
             random.randint(*external_follower_range))
 
-        return [latex(pre_gen_eq.expand()), latex(pre_gen_eq)]
+        return [pre_gen_eq.expand(), pre_gen_eq]
 
     def gen_question(self, diff=0, **kwargs):
         if diff == 0:
